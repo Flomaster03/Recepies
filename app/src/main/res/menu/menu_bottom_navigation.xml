@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/allRecipes"
+        android:id="@+id/feedFragment"
         android:title="@string/all_recipes"
         android:icon="@drawable/ic_all_recipes"/>
     <item
-        android:id="@+id/favourites"
+        android:id="@+id/favouriteFragment"
         android:title="@string/favourites"
         android:icon="@drawable/ic_favourites"/>
     <item
-        android:id="@+id/filter"
+        android:id="@+id/filterFragment"
         android:title="@string/filter"
         android:icon="@drawable/ic_filter"/>
 </menu>

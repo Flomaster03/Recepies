@@ -16,7 +16,11 @@
     <string name="button_save_description">Save</string>
     <string name="category_recipe_hint">Category</string>
     <string name="menu_options_description">Menu</string>
-    <string name="button_favorite_description">Favorite</string>
+    <string name="button_favourite_description">Favorite</string>
     <string name="button_add_recipe_description">Add recipe</string>
     <string name="button_apply_text">Apply</string>
+    <string name="empty_text_favourite">Theres nothing here yet!</string>
+    <string name="remove">Remove</string>
+    <string name="edit">Remove</string>
+    <string name="search">Search</string>
 </resources>

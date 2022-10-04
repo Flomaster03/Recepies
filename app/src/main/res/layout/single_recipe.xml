@@ -55,11 +55,12 @@
         android:ellipsize="end"
         android:singleLine="true"
         android:text="@string/text_recipe_hint"
-        android:textSize="14sp"
+        android:textSize="16sp"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="@id/categoryRecipe"
         app:layout_constraintEnd_toStartOf="@id/menuOptions"
-        app:layout_constraintTop_toBottomOf="@id/categoryRecipe" />
+        app:layout_constraintTop_toBottomOf="@id/categoryRecipe"
+        android:focusable="true" />
 
 
     <com.google.android.material.button.MaterialButton
@@ -73,10 +74,10 @@
         app:layout_constraintTop_toTopOf="parent"
         style="@style/Widget.AppTheme.MenuButton"
 
-         />
+        />
 
     <ImageButton
-        android:id="@+id/buttonFavorite"
+        android:id="@+id/buttonFavourite"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@android:color/transparent"
@@ -84,8 +85,9 @@
         android:src="@drawable/ic_is_not_favourites"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/menuOptions"
-        android:contentDescription="@string/button_favorite_description"
-        style="@style/Widget.AppTheme.StarButton"/>
+        android:contentDescription="@string/button_favourite_description"
+        style="@style/Widget.AppTheme.StarButton"
+        android:focusable="true" />
 
     <androidx.constraintlayout.widget.Barrier
         android:layout_width="match_parent"
