@@ -47,7 +47,7 @@ class UpdateFragment : Fragment() {
 
     private fun onSaveButtonClicked(binding: FragmentUpdateBinding) {
 
-        val id = arguments?.idArgs
+        val id = arguments?.idArgs ?: return
         val title = binding.title.text.toString()
         val authorName = binding.authorName.text.toString()
         val textRecipe = binding.textRecipe.text.toString()
@@ -61,13 +61,11 @@ class UpdateFragment : Fragment() {
         ) return
 
         viewModel.updateContent(
-
-
-                title = title,
-                authorName = authorName,
-                textRecipe = textRecipe,
-                categoryRecipe = categoryRecipeNumber
-
+            id = id,
+            title = title,
+            authorName = authorName,
+            textRecipe = textRecipe,
+            categoryRecipe = categoryRecipeNumber
         )
         findNavController().popBackStack()
     }

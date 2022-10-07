@@ -3,13 +3,16 @@
     <item
         android:id="@+id/feedFragment"
         android:title="@string/all_recipes"
+        android:enabled="true"
         android:icon="@drawable/ic_all_recipes"/>
     <item
         android:id="@+id/favouriteFragment"
         android:title="@string/favourites"
+        android:enabled="true"
         android:icon="@drawable/ic_favourites"/>
     <item
         android:id="@+id/filterFragment"
         android:title="@string/filter"
+        android:enabled="true"
         android:icon="@drawable/ic_filter"/>
 </menu>

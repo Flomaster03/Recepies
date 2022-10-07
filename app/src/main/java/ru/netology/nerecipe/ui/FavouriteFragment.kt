@@ -71,12 +71,12 @@ class FavouriteFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        viewModel.updateRecipeFragment.observe(viewLifecycleOwner) {
+        viewModel.toUpdateFragment.observe(viewLifecycleOwner) {
             findNavController().navigate(R.id.action_favouriteFragment_to_updateFragment)
             findNavController().navigateUp()
         }
 
-        viewModel.singleFragment.observe(viewLifecycleOwner) {
+        viewModel.toSingleFragment.observe(viewLifecycleOwner) {
             findNavController().navigate(R.id.action_favouriteFragment_to_viewSingleFragment)
             findNavController().navigateUp()
         }

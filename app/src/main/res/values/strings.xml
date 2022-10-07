@@ -23,6 +23,5 @@
     <string name="remove">Remove</string>
     <string name="edit">Remove</string>
     <string name="search">Search</string>
-<!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="button_clear_filter">ClearFilter</string>
 </resources>

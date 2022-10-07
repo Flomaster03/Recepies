@@ -3,6 +3,7 @@ package ru.netology.nerecipe.ui
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import androidx.core.view.isVisible
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.onNavDestinationSelected
@@ -12,25 +13,36 @@ import ru.netology.nerecipe.R
 import ru.netology.nerecipe.databinding.ActivityAppBinding
 
 class MainActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         val binding = ActivityAppBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         val navController = navHostFragment.navController
-        findViewById<BottomNavigationView>(R.id.bottom_navigation_bar)
-            .setupWithNavController(navController)
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation_bar)
+        bottomNavigationView.setupWithNavController(navController)
+
+        navController.addOnDestinationChangedListener { _, _, arguments ->
+            binding.bottomNavigationBar.isVisible =
+                arguments?.getBoolean("ShowAppBar", false) == true
+        }
+//       val navHostFragment =
+//           supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+//       val navController = navHostFragment.navController
+//       findViewById<BottomNavigationView>(R.id.bottom_navigation_bar)
+//           .setupWithNavController(navController)
+//   }
+
+//   override fun onOptionsItemSelected(item: MenuItem): Boolean {
+//       val navController = findNavController(R.id.nav_host_fragment)
+//       return item.onNavDestinationSelected(navController) || super.onOptionsItemSelected(item)
+
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        val navController = findNavController(R.id.nav_host_fragment)
-        return item.onNavDestinationSelected(navController) || super.onOptionsItemSelected(item)
 
-
-    }
 
 
 }

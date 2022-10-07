@@ -18,11 +18,11 @@ class RecipeViewModel(application: Application) : AndroidViewModel(application),
 
     val data by repository::data
     var filterIsActive = false
-    val favoriteFragment = SingleLiveEvent<String>()
-    val createFragment = SingleLiveEvent<Unit>()
-    val updateRecipeFragment = SingleLiveEvent<String?>()
-    val singleFragment = SingleLiveEvent<Unit>()
-    val filterFragment = SingleLiveEvent<Unit>()
+    val toFavoriteFragment = SingleLiveEvent<String>()
+    val toCreateFragment = SingleLiveEvent<Unit>()
+    val toUpdateFragment = SingleLiveEvent<String?>()
+    val toSingleFragment = SingleLiveEvent<Long>()
+    val toFilterFragment = SingleLiveEvent<Unit>()
     val updateRecipe = MutableLiveData<Recipe>(null)
     val singleRecipe = MutableLiveData<Recipe?>(null)
     val feedFragment = data
@@ -36,14 +36,14 @@ class RecipeViewModel(application: Application) : AndroidViewModel(application),
     override fun updateContent(
         id: Long,
         title: String,
-        authorNam: String,
+        authorName: String,
         categoryRecipe: String,
         textRecipe: String
     ) {
         val recipe = Recipe(
             id = id,
             title = title,
-            authorName = authorNam,
+            authorName = authorName,
             categoryRecipe = categoryRecipe,
             textRecipe = textRecipe
         )
@@ -56,7 +56,7 @@ class RecipeViewModel(application: Application) : AndroidViewModel(application),
 
     override fun onEditClicked(recipe: Recipe) {
         updateRecipe.value = recipe
-        updateRecipeFragment.call()
+        toUpdateFragment.call()
     }
 
     override fun onFavouriteClicked(recipeId: Long) {
@@ -68,7 +68,7 @@ class RecipeViewModel(application: Application) : AndroidViewModel(application),
     }
 
     override fun onCreateClicked() {
-        createFragment.call()
+        toCreateFragment.call()
     }
 
     override fun onSaveClicked(title: String, authorName: String, categoryRecipe: String, textRecipe: String) {
@@ -86,7 +86,7 @@ class RecipeViewModel(application: Application) : AndroidViewModel(application),
 
     override fun onSingleRecipeClicked(recipe: Recipe) {
         singleRecipe.value = recipe
-        singleFragment.call()
+        toSingleFragment.call()
     }
 
     var toggleCheckEuropean = true

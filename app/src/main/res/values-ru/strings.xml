@@ -24,4 +24,5 @@
     <string name="remove">Удалить</string>
     <string name="edit">Редактировать</string>
     <string name="search">Поиск</string>
+    <string name="button_clear_filter">Очистить фильтр</string>
 </resources>

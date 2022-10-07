@@ -14,7 +14,7 @@
             android:id="@+id/action_feedFragment_to_createFragment"
             app:destination="@id/createFragment" />
         <action
-            android:id="@+id/toRecipeViewFragment"
+            android:id="@+id/action_feedFragment_to_RecipeViewFragment"
             app:destination="@id/viewSingleFragment" />
         <action
             android:id="@+id/action_feedRecipeFragment_to_recipeFilterFragment"
@@ -22,8 +22,11 @@
         <action
             android:id="@+id/action_feedFragment_to_favouriteFragment"
             app:destination="@id/favouriteFragment" />
+        <argument
+            android:name="ShowAppBar"
+            android:defaultValue="true" />
         <action
-            android:id="@+id/toUpdateFragment"
+            android:id="@+id/action_feedFragment_to_UpdateFragment"
             app:destination="@id/updateFragment" />
     </fragment>
     <fragment
@@ -33,6 +36,9 @@
         <action
             android:id="@+id/action_favouriteFragment_to_viewSingleFragment"
             app:destination="@id/viewSingleFragment" />
+        <argument
+            android:name="ShowAppBar"
+            android:defaultValue="true" />
         <action
             android:id="@+id/action_favouriteFragment_to_updateFragment"
             app:destination="@id/updateFragment" />
@@ -41,6 +47,9 @@
         android:id="@+id/filterFragment"
         android:name="ru.netology.nerecipe.ui.FilterFragment"
         android:label="RecipeFilterFragment" />
+        <argument
+            android:name="ShowAppBar"
+            android:defaultValue="true" />
     <fragment
         android:id="@+id/createFragment"
         android:name="ru.netology.nerecipe.ui.CreateFragment"

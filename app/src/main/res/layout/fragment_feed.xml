@@ -18,7 +18,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/common_margin"
-        android:layout_marginBottom="@dimen/common_margin"
+        android:layout_marginBottom="@dimen/icon_button_size"
         android:contentDescription="@string/button_add_recipe_description"
         app:backgroundTint="@color/purple_500"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -52,6 +52,18 @@
             app:backgroundTint="@color/teal_200" />
 
     </com.google.android.material.appbar.AppBarLayout>
+
+    <Button
+        android:id="@+id/buttonClearFilter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="48dp"
+        android:backgroundTint="@color/teal_200"
+        android:text="@string/button_clear_filter"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
