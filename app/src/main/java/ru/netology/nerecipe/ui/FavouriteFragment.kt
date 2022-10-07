@@ -9,7 +9,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import ru.netology.nerecipe.R
 import ru.netology.nerecipe.adapter.RecipeAdapter
-import ru.netology.nerecipe.databinding.ListFavoriteBinding
+import ru.netology.nerecipe.databinding.FragmentFavouriteBinding
 import ru.netology.nerecipe.viewModel.RecipeViewModel
 
 class FavouriteFragment : Fragment() {
@@ -20,74 +20,71 @@ class FavouriteFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ) = ListFavouriteBinding.inflate(layoutInflater, container, false).also { binding ->
+    ) = FragmentFavouriteBinding.inflate(layoutInflater, container, false).also { binding ->
 
         viewModel.data.observe(viewLifecycleOwner) { recipes ->
 
-            val favRecipes = recipes.none { it.isFavorite }
+            val favRecipes = recipes.none { it.isFavourite }
             if (favRecipes) {
-                binding.textBackground.isVisible = favRecipes
-                binding.iconBackground.isVisible = favRecipes
+                binding.emptyFavouriteText.isVisible = favRecipes
+                binding.emptyFavouriteImage.isVisible = favRecipes
             }
         }
 
 
         val adapter = RecipeAdapter(viewModel)
-        binding.listFavorite.adapter = adapter
+        binding.listFavourite.adapter = adapter
 
         viewModel.data.observe(viewLifecycleOwner) { recipes ->
-            val favRecipes = recipes.filter { it.isFavorite }
+            val favRecipes = recipes.filter { it.isFavourite }
             adapter.submitList(favRecipes)
         }
 
-        binding.bottomToolbar.setOnItemSelectedListener {
-            when (it.itemId) {
-                R.id.feed -> findNavController().popBackStack()
-            }
-            true
-        }
-        binding.bottomToolbar.setOnItemSelectedListener { menuItem ->
-            when (menuItem.itemId) {
-                R.id.favourites -> {
-                    viewModel.favoriteFragment.call()
-                    true
-                }
-                R.id.filter -> {
-                    viewModel.filterFragment.call()
-                    true
-                }
-                R.id.feed -> {
-                    viewModel.feedFragment.observe(viewLifecycleOwner) {
-                        val directions = RecipeFavoriteFragmentDirections.actionFavoriteFragmentToFeedFragment()
-                        findNavController().navigate(directions)
-                    }
-                    true
-                }
-                else -> false
-            }
-        }
-    }.root
+ //      binding.bottomToolbar.setOnItemSelectedListener {
+ //          when (it.itemId) {
+ //              R.id.feed -> findNavController().popBackStack()
+ //          }
+ //          true
+ //      }
+ //      binding.bottomToolbar.setOnItemSelectedListener { menuItem ->
+ //          when (menuItem.itemId) {
+ //              R.id.favourites -> {
+ //                  viewModel.favoriteFragment.call()
+ //                  true
+ //              }
+ //              R.id.filter -> {
+ //                  viewModel.filterFragment.call()
+ //                  true
+ //              }
+ //              R.id.feed -> {
+ //                  viewModel.feedFragment.observe(viewLifecycleOwner) {
+ //                      val directions = RecipeFavoriteFragmentDirections.actionFavoriteFragmentToFeedFragment()
+ //                      findNavController().navigate(directions)
+ //                  }
+ //                  true
+ //              }
+ //              else -> false
+ //          }
+ //      }
+   }.root
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        viewModel.updateRecipeFragment.observe(this) {
-            val updatedRecipe = viewModel.updateRecipe.value
-            val directions = FeedRecipeFragmentDirections.updateRecipeFragment(updatedRecipe)
-            findNavController().navigate(directions)
+        viewModel.updateRecipeFragment.observe(viewLifecycleOwner) {
+            findNavController().navigate(R.id.action_favouriteFragment_to_updateFragment)
+            findNavController().navigateUp()
         }
 
-        viewModel.singleFragment.observe(this) {
-            val viewRecipe = viewModel.singleRecipe.value
-            val directions = FeedRecipeFragmentDirections.recipeViewFragment(viewRecipe)
-            findNavController().navigate(directions)
+        viewModel.singleFragment.observe(viewLifecycleOwner) {
+            findNavController().navigate(R.id.action_favouriteFragment_to_viewSingleFragment)
+            findNavController().navigateUp()
         }
 
-        viewModel.filterFragment.observe(this) {
-            val directions = FeedRecipeFragmentDirections.recipeFilterFragment()
-            findNavController().navigate(directions)
-        }
+
+  //     viewModel.filterFragment.observe(this) {
+  //         val directions = FeedRecipeFragmentDirections.recipeFilterFragment()
+  //         findNavController().navigate(directions)
+  //     }
     }
-
-
 }

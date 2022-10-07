@@ -9,7 +9,7 @@ interface RecipeRepository {
     fun save(recipe: Recipe)
     fun update(recipe: Recipe)
     fun delete(recipe: Recipe)
-    fun favorite(long: Long)
+    fun favourite(long: Long)
     fun searchText(Text: String)
     fun getData()
 

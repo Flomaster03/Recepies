@@ -59,8 +59,8 @@ class RecipeViewModel(application: Application) : AndroidViewModel(application),
         updateRecipeFragment.call()
     }
 
-    override fun onFavoriteClicked(recipeId: Long) {
-        repository.favorite(recipeId)
+    override fun onFavouriteClicked(recipeId: Long) {
+        repository.favourite(recipeId)
     }
 
     override fun onSearchClicked(text: String) {
@@ -71,12 +71,12 @@ class RecipeViewModel(application: Application) : AndroidViewModel(application),
         createFragment.call()
     }
 
-    override fun onSaveClicked(title: String, authorNam: String, categoryRecipe: String, textRecipe: String) {
+    override fun onSaveClicked(title: String, authorName: String, categoryRecipe: String, textRecipe: String) {
 
         val recipe = Recipe(
             id = RecipeRepository.NEW_ID,
             title = title,
-            authorName = authorNam,
+            authorName = authorName,
             categoryRecipe = categoryRecipe,
             textRecipe = textRecipe
         )

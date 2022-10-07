@@ -76,13 +76,13 @@
 
         />
 
-    <ImageButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonFavourite"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@android:color/transparent"
-        android:clickable="true"
-        android:src="@drawable/ic_is_not_favourites"
+        android:background="@android:color/transparent"
+        android:checkable="true"
+        app:icon="@drawable/ic_is_not_favourites"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/menuOptions"
         android:contentDescription="@string/button_favourite_description"

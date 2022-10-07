@@ -7,7 +7,7 @@ internal fun RecipeEntity.toModel() = Recipe(
     authorName = authorName,
     categoryRecipe = categoryRecipe,
     textRecipe = textRecipe,
-    isFavorite = isFavorite,
+    isFavourite = isFavourite,
 )
 
 internal fun Recipe.toEntity() = RecipeEntity(
@@ -16,5 +16,5 @@ internal fun Recipe.toEntity() = RecipeEntity(
     authorName = authorName,
     categoryRecipe = categoryRecipe,
     textRecipe = textRecipe,
-    isFavorite = isFavorite,
+    isFavourite = isFavourite,
 )

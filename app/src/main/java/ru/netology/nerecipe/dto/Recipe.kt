@@ -9,5 +9,5 @@ data class Recipe(
     val authorName: String,
     val categoryRecipe: String,
     val textRecipe: String,
-    val isFavorite: Boolean = false
+    val isFavourite: Boolean = false
 )

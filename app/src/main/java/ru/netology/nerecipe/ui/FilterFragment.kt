@@ -71,8 +71,8 @@ class FilterFragment : Fragment() {
         if (checkedCount == 0) {
             viewModel.clearFilter()
             viewModel.filterIsActive = false
-            findNavController().popBackStack()
-        } else findNavController().popBackStack()
+            findNavController().navigateUp()
+        } else findNavController().navigateUp()
     }
 
 }

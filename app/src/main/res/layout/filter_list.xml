@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.FavouriteFragment">
+    >
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/listFavourite"
+        android:id="@+id/listFilter"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
@@ -17,7 +17,7 @@
 
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/emptyFavouriteImage"
+        android:id="@+id/emptyFilterImage"
         android:layout_width="402dp"
         android:layout_height="569dp"
         android:src="@drawable/food"
@@ -26,22 +26,22 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/emptyFavouriteText"
+        android:id="@+id/emptyFilterText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/empty_text_favourite"
         android:textSize="24sp"
         android:gravity="center"
-        app:layout_constraintEnd_toEndOf="@id/emptyFavouriteImage"
-        app:layout_constraintStart_toStartOf="@id/emptyFavouriteImage"
-        app:layout_constraintTop_toBottomOf="@id/emptyFavouriteImage" />
+        app:layout_constraintEnd_toEndOf="@id/emptyFilterImage"
+        app:layout_constraintStart_toStartOf="@id/emptyFilterImage"
+        app:layout_constraintTop_toBottomOf="@id/emptyFilterImage" />
 
     <androidx.constraintlayout.widget.Group
-        android:id="@+id/emptyFavouriteGroup"
+        android:id="@+id/emptyFilterGroup"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:visibility="gone"
-        app:constraint_referenced_ids="emptyFavouriteImage, emptyFavouriteText"
+        app:constraint_referenced_ids="emptyFilterImage, emptyFilterText"
         tools:visibility="visible" />
 
 

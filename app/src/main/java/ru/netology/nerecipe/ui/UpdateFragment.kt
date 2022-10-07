@@ -7,23 +7,26 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import ru.netology.nerecipe.R
-import ru.netology.nerecipe.databinding.FragmentCreateBinding
+import ru.netology.nerecipe.databinding.FragmentUpdateBinding
+import ru.netology.nerecipe.dto.Recipe
 import ru.netology.nerecipe.viewModel.RecipeViewModel
+import ru.netology.nmedia.util.LongArgs
+import ru.netology.nmedia.util.StringArgs
 
-class CreateFragment : Fragment() {
+class UpdateFragment : Fragment() {
+
     private val viewModel by activityViewModels<RecipeViewModel>()
+
     private var categoryRecipeNumber = ""
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ) = FragmentCreateBinding.inflate(layoutInflater, container, false).also { binding ->
-
-        binding.buttonSave.setOnClickListener {
-            onSaveButtonClicked(binding)
-        }
+    ) = FragmentUpdateBinding.inflate(layoutInflater, container, false).also { binding ->
+        incomingArg(binding)
 
         binding.categoryRecipeCheckBox.setOnCheckedChangeListener { _, i ->
             when (i) {
@@ -42,16 +45,37 @@ class CreateFragment : Fragment() {
         }
     }.root
 
-    private fun onSaveButtonClicked(binding: FragmentCreateBinding) {
+    private fun onSaveButtonClicked(binding: FragmentUpdateBinding) {
 
+        val id = arguments?.idArgs
         val title = binding.title.text.toString()
         val authorName = binding.authorName.text.toString()
         val textRecipe = binding.textRecipe.text.toString()
 
-        if (!emptyCheckUpdateWarning(title = title, authorName = authorName, textRecipe = textRecipe, categoryRecipe = categoryRecipeNumber)) return
+        if (!emptyCheckUpdateWarning(
+                title = title,
+                authorName = authorName,
+                textRecipe = textRecipe,
+                categoryRecipe = categoryRecipeNumber
+            )
+        ) return
 
-        viewModel.onSaveClicked(title = title, authorName = authorName, categoryRecipe = categoryRecipeNumber, textRecipe = textRecipe)
+        viewModel.updateContent(
+
+
+                title = title,
+                authorName = authorName,
+                textRecipe = textRecipe,
+                categoryRecipe = categoryRecipeNumber
+
+        )
         findNavController().popBackStack()
+    }
+
+    private fun incomingArg(binding: FragmentUpdateBinding) {
+        binding.title.setText(arguments?.titleArg.toString())
+        binding.authorName.setText(arguments?.authorNameArg.toString())
+        binding.textRecipe.setText(arguments?.textArg.toString())
     }
 
     private fun emptyCheckUpdateWarning(
@@ -66,4 +90,11 @@ class CreateFragment : Fragment() {
         } else true
     }
 
+    companion object {
+        var Bundle.idArgs: Long by LongArgs
+        var Bundle.titleArg: String? by StringArgs
+        var Bundle.authorNameArg: String? by StringArgs
+        var Bundle.categoryArg: String? by StringArgs
+        var Bundle.textArg: String? by StringArgs
+    }
 }

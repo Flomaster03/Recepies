@@ -36,7 +36,7 @@ class RecipeRepositoryImpl(
         dao.removeById(recipe.id)
     }
 
-    override fun favorite(long: Long) {
+    override fun favourite(long: Long) {
         dao.favById(long)
     }
 
@@ -76,13 +76,11 @@ class RecipeRepositoryImpl(
         }
     }
 
-
     override fun showRussian(type: String) {
         data = data.map {
             it.filter { it.categoryRecipe != type }
         }
     }
-
 
     override fun showMediterranean(type: String) {
         data = data.map {
